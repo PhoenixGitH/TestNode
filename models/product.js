@@ -11,4 +11,4 @@ const ProductScheme = Schema({
   description: String
 })
 
-module.exports = mongoose.model('Product',ProductScheme)
+module.exports = mongoose.model('Product', ProductScheme)

@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose')
 
-const app = require('./app');
+const app = require('./app')
 const config = require('./config')
 
 // Getters
@@ -10,24 +10,24 @@ const config = require('./config')
   app.get('/hola', (req,res) => {
   //Send what ever message you like.
   res.send({ "message": "Hola mundo" })
-})*/
+}) */
 
 // Get Product info.
-/*app.get('/api/product', (req,res) => {
+/* app.get('/api/product', (req,res) => {
   // Testing
   //res.status(200).send({products: []})
 
-})*/
+}) */
 
 // Connection to mongoDB data base.
-mongoose.connect(config.db, (err,res) => {
-    if (err){
-      return console.log(`Error al conectar con la base de datos. ${err}`)
-    }
-    console.log('Conexión con la base de datos establecida')
+mongoose.connect(config.db, (err, res) => {
+  if (err) {
+    return console.log(`Error al conectar con la base de datos. ${err}`)
+  }
+  console.log('Conexión con la base de datos establecida')
 
-    // Use enviroment variable port or 3000.
-    app.listen(config.port, () => {
-      console.log(`API REST corriendo http://localhost:${config.port}`)
-    })
+  // Use enviroment variable port or 3000.
+  app.listen(config.port, () => {
+    console.log(`API REST corriendo http://localhost:${config.port}`)
+  })
 })

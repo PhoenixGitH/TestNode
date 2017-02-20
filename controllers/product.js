@@ -1,14 +1,14 @@
 'use strict'
 
-//Data base models
+// Data base models
 const Product = require('../models/product')
 
-function getProducts(req,res){
+function getProducts (req, res) {
   Product.find({}, (err,products) => {
-    if(err){
+    if(err) {
       res.status(500).send( { message: 'Error al recuperar los productos' })
     }
-    if(!products){
+    if(!products) {
       res.status(404).send({ message: 'No existe productos' })
     }
     console.log(`Productos recuperados: ${products}`)
@@ -18,7 +18,7 @@ function getProducts(req,res){
   })
 }
 
-function getProduct(req,res){
+function getProduct (req, res) {
   console.log('GET /api/product/productId')
 
   // Store the params in variables.
@@ -38,7 +38,7 @@ function getProduct(req,res){
   })
 }
 
-function sendProduct(req,res){
+function sendProduct (req, res) {
   /* Testing post.
   console.log(req.body)
   res.status(200).send({message: 'El producto se ha recibido'}) */
@@ -48,12 +48,12 @@ function sendProduct(req,res){
   let product = new Product()
   product.name = req.body.name
   product.picture = req.body.picture
-  product.price = req.body. price
+  product.price = req.body.price
   product.category = req.body.category
   product.description = req.body.description
 
-  product.save((err,productStored) => {
-    if (err){
+  product.save((err, productStored) => {
+    if (err) {
       res.status(500).send({ message: `Error al salvar producto en la base de datos: ${err}`})
     }
     res.status(200).send({ product: productStored} )
